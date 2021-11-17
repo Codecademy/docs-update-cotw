@@ -1,0 +1,26 @@
+{
+  "name": "codecademy-docs",
+  "dependencies": {
+    "glob": "^7.1.7"
+  },
+  "devDependencies": {
+    "@codecademy/eslint-config": "^3.1.0",
+    "@codecademy/prettier-config": "^0.1.10",
+    "@codecademy/tsconfig": "^0.2.0",
+    "@types/glob": "^7.1.4",
+    "@types/node": "^16.4.3",
+    "eslint": "^7.25.0",
+    "prettier": "^2.2.1",
+    "ts-node": "^10.3.1",
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "compile": "tsc --noEmit",
+    "format": "prettier --ignore-path .prettierignore --write update-cotw.ts",
+    "format:verify": "prettier update-cotw.ts --list-different",
+    "lint": "eslint update-cotw.ts --max-warnings 0 ",
+    "update-cotw": "ts-node update-cotw.ts"
+  },
+  "license": "UNLICENSED",
+  "version": "1.0.0"
+}
