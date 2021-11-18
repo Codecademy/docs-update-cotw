@@ -6,6 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          repository: 'Codecademy/docs'
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           path: 'docs'
       - uses: Codecademy/run-on-yarn@v1.1.0
