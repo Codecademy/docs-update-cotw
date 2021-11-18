@@ -4,6 +4,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
+      - run: export GITHUB_TOKEN=${{ secrets.ACTIONS_GITHUB_TOKEN }}
       - uses: Codecademy/run-on-yarn@v1.1.0
         with:
           command: 'update-cotw'
