@@ -9,6 +9,7 @@ jobs:
           repository: 'Codecademy/docs'
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           path: 'docs'
+      - run: pwd
       - uses: Codecademy/run-on-yarn@v1.1.0
         with:
           command: 'update-cotw'
