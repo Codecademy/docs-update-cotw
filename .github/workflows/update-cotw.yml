@@ -6,14 +6,26 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+        with:
           repository: 'Codecademy/docs'
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           path: 'docs'
-      - run: pwd
-      - uses: Codecademy/run-on-yarn@v1.1.0
+      - uses: actions/setup-node@v2
         with:
-          command: 'update-cotw'
-          github-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          cache: 'yarn'
+          node-version: 16
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-yarn-node-16-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies If Not Cached
+        run: \[ -d node_modules \] || yarn install --frozen-lockfile
+        shell: bash
+      - run: yarn update-cotw
+        shell: bash
       - name: 'Commit changes'
         run: |
           cd docs
