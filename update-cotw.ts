@@ -2,12 +2,17 @@ import fs from 'fs';
 import glob from 'glob';
 import path from 'path';
 
-const storePath = path.join(__dirname, 'docs/bin/concept-of-the-week.txt');
+// relative path to the directory into which the docs repo is cloned by the github action
+const contentRepoPath = 'docs/';
+
+const storePath = path.join(__dirname, contentRepoPath, 'bin/concept-of-the-week.txt');
 
 const getRandomElement = (arr: any[]) =>
   arr[Math.floor(Math.random() * arr.length)];
 
-const conceptPaths = glob.sync('docs/content/*/concepts/*/*.md');
+const conceptPaths = glob
+  .sync(path.join(contentRepoPath, 'content/*/concepts/*/*.md'))
+  .map((conceptPath) => conceptPath.replace(contentRepoPath, ''));
 
 const currentConceptPath = fs.existsSync(storePath)
   ? fs.readFileSync(storePath)
