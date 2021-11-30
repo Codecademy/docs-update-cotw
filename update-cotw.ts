@@ -5,7 +5,11 @@ import path from 'path';
 // relative path to the directory into which the docs repo is cloned by the github action
 const contentRepoPath = 'docs/';
 
-const storePath = path.join(__dirname, contentRepoPath, 'bin/concept-of-the-week.txt');
+const storePath = path.join(
+  __dirname,
+  contentRepoPath,
+  'bin/concept-of-the-week.txt'
+);
 
 const getRandomElement = (arr: any[]) =>
   arr[Math.floor(Math.random() * arr.length)];
