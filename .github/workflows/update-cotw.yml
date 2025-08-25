@@ -4,19 +4,19 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           repository: 'Codecademy/docs'
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           path: 'docs'
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
           node-version: 16
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: yarn-cache
         with:
           path: '**/node_modules'
