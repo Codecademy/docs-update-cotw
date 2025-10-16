@@ -33,7 +33,7 @@ jobs:
           git add ./bin/concept-of-the-week.txt
           git commit -m "🤖 update concept of the week"
           git push
-      - uses: gautamkrishnar/keepalive-workflow@v1 # prevents github from disabling workflow after 60 days
+      - uses: entepotenz/keep-github-actions-alive-min-dependencies@v1 # prevents github from disabling workflow after 60 days
 
 on:
   schedule:
